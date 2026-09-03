@@ -1,0 +1,19 @@
+Comments, Identifiers, Keywords
+
+1. Comments and types of comments, rules
+2. Identifiers and types of identifies, rules
+3. Keywords, their operations, list of keyworkds, rules
+4. Changes added in different values from Java 1.0 to Java 21
+5. Reserved word, types of reserved words, and their purpose
+6. Difference between Keyword and reserved word
+7. Seperator, list of separators, diff b/w separator and operator
+
+
+Comments and types of comments, rules:-
+1. What is comment?//-> Comment is Special Syntax
+2. Why comment?// we need comment to ignore some line from Compiler 
+3. Types of comments?// single Line slash , Mutiple line comment,Document Comment
+4. How sample program?
+5. Sample program with comments?
+6. Where can we use comment?
+7. Compiler time errors and Inteview Bits?

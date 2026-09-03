@@ -1,0 +1,37 @@
+what is java ?
+java is object oriented, platform independent,pardigm language.
+
+Object Oriented:-
+1. class
+2. Object 
+3. Inteface
+4. Abstraction
+
+platform independent :-
+1. Write Once Run Any Where
+	.java -> .class(Byte code)- (Every OS Have Diff)JVM(java Virtual Machine) -->ML 
+	
+Support multi-pardigm language also:
+Object Oriented
+function --> method 
+pl/sql-->
+void m1(){ // pardigm 
+}
+
+java 8 Feature Function Intefce (Stream API) 
+()->
+
+Supporting  Object Oriented ,procedure ,and Stream API
+this is called multi-pardigm 
+
+
+
+
+what is Full Stack Devloper :
+-->The Process of Who  Build project END TO END  is called Full Stack Devloper 
+
+END TO END -->
+// Full Stack
+Build Proj UI + Backend + DATA BASE
+
+

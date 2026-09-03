@@ -1,0 +1,44 @@
+java ch1:
+w
+Comment:-
+
+we can't simply write any thing because java case Sensitive
+what is comment?
+--> you telling to the java compiler ingore the line --> by the help( // ,/* */,/** */)
+how many types of comment?
+-->  there three type of Comment:-
+	1. Single line (//)
+	2. multi line comment(/* */)
+	3. Document comment(/** */)
+why we use Comment?
+==> tell to the complier please ignore this line which are commented
+
+when 
+ 
+program 
+
+
+Comment and types of comments
+
+ A comment is special syntax using which we can inform
+to comipler some part of the code no need to compile.
+and also using comment we can provide description to
+a programming element or a statement for other
+programmer or only for us to understand it in future.
+
+2) We have three types of comments
+1) Single line comment
+2) Multi line comment
+3) Document comment
+
+3) Single line and multi line comments are meant for
+commenting programming elements and statements
+where as document commnet is meant for providing
+description or documentation for programming element
+
+-> //
+-> /*
+-> **
+
+*/
+*/
