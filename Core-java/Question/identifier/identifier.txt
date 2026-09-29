@@ -1,0 +1,13 @@
+Interview Questions
+1) What is an identifier in Java? Why do we use identifiers in Java?
+2) What are the rules for creating identifiers in Java?
+
+Core Java Interview Questions
+3) Are Java identifiers case-sensitive?
+4) Can we use special characters like @, #, $, % in identifiers?
+5) Can we use keywords as identifiers?
+6) What are reserved keywords? How are they different from identifiers?
+7) Can method name and variable name be the same identifier?
+8) What is the difference between an identifier and a literal?
+9) What is the difference between identifier and variable?
+10) What are legal and illegal identifier examples?

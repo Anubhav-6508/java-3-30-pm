@@ -1,0 +1,25 @@
+1. What are the types of comments in Java?
+2. Difference between single-line and multi-line comments.
+3. Can comments be nested?
+4. Are comments compiled into bytecode?
+5. What is the purpose of comments in coding standards or documentation?
+===================================================
+variables in Java (Instance, Static, Local)
+Interview Questions
+1. What are the types of variables in Java?
+2. Difference between instance, static, and local variables.
+3. Can we declare variables inside a method as static?
+4. Scope and lifetime of instance variables, static variable, local variables?
+5. How are static variables shared among objects?
+6. Default values of instance, static, and local variables.?
+7. Can a variable shadow another variable?
+8. How do instance, static variables, differ from local variables in memory allocation?
+9. What is the difference between class-level and object-level variables?
+Core Java Interview Questions
+NARESHIT pg. 32
+10. What happens if we try to access a local variable in Java without initializing it?
+Programs:
+1. Write a program to demonstrate the difference between instance and static variables.
+2. Show how modifying a static variable affects all objects of a class.
+3. Write a method to demonstrate local variable scope.
+4. Create a program where variable shadowing occurs and explain the 

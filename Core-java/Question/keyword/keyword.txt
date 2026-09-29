@@ -1,0 +1,34 @@
+Interview Questions
+1) What is a keyword in Java?
+2) How many keywords are available in Java?
+3) Are Java keywords case-sensitive?
+4) Why are keywords reserved in Java?
+5) Can keywords be used as identifiers? Why not?
+6) What is the use of static keyword?
+7) What is the use of final keyword? What happen when we declare a variable, method, class as final?
+8) What does the super keyword do in Java?
+9) What is the role of this keyword?
+10) What is the difference between this and super?
+11) What is the purpose of the new keyword?
+12) Why do we use the return keyword?
+13) What are break and continue keywords?
+14) What is the use of void keyword?
+15) Explain public, private, protected keywords.
+16) What is the difference between abstract and final keywords?
+17) What is the role of the extends keyword?
+18) What is the use of implements keyword?
+19) What is the use of package keyword?
+20) What is the difference between import and package?
+21) What is the purpose of instanceof keyword
+22) Explain the use of interface keyword
+23) What is the use of throws and throw keywords?
+24) What does the try, catch, and finally block mean?
+25) What is the use of enum keyword?
+26) What does the transient keyword do?
+27) What is the role of volatile keyword?
+28) What is the use of synchronized keyword?
+29) What is the meaning of strictfp keyword?
+30) Where do we use native keyword?
+31) What is the difference between const and final in Java?
+32) Is goto keyword supported in Java?
+33) Describe real-time uses of transient and volatile?

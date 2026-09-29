@@ -1,0 +1,36 @@
+1. What is a datatype in Java, and why do we need it for every variable?
+2. What are the main types of datatypes in Java? Give examples.
+3. What is a primitive datatype? Why do we use primitive datatypes?
+4. List all primitive datatypes in Java. What kind of values do they store?
+5. What is the size, default value, and range of each primitive datatype?
+6. What is a reference datatype? Give examples.
+7. Can primitive datatypes hold null? Can reference datatypes hold null?
+8. What is the difference between primitive and reference datatypes?
+9. Can a variable be declared without assigning a value? What happens if you try to use it?
+10. Can primitive datatypes be declared inside constructors, static blocks, instance blocks, or non-static
+methods? Explain.
+11. If you declare all primitive datatypes inside a method and try to print them without initialization, what
+happens?
+12. What happens if you declare a primitive variable with a value larger than its range? Give an example.
+13. If you declare a variable with a primitive types, what does JVM do internally? How much memory is
+allocated?
+14. Where are primitive variables stored in memory?
+
+
+15. Where are reference variables stored in memory?
+16. What happens if you assign one reference variable to another?
+17. Explain overflow and underflow with examples using byte, short, int, or long.
+18. What happens if you call a method on a null reference variable?
+19. Show an example where a local variable has the same name as a class-level variable (variable
+shadowing).
+20. Can primitive and reference datatypes be mixed in expressions, like int + Integer? What happens?
+21. Can a final primitive or reference variable be changed after initialization? What happens?
+
+
+public class Test2
+{
+ public static void main(String[] args)
+{
+ String s = null;
+ System.out.println(s);
+ }
