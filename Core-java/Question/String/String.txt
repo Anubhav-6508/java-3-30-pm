@@ -1,0 +1,81 @@
+1. What is a String in Java?
+2. How do you create a String object & how many way to create the Strings in java?
+3. Difference between: String s1 = "Hello"; & String s2 = new String("Hello");
+4. Why are String objects immutable in Java?
+5. What is String Constant Pool (SCP)?
+6. How does SCP help in memory optimization?
+7. What happens when you create two String literals with the same value?
+8. How does Java store Strings created using new keyword?
+9. How does intern() method work in Strings?
+10. Why did Java designers make String immutable? (Security, Caching, Thread-safety, Performance)?
+11. What is the advantage of storing Strings in SCP?
+12. What happens internally when you modify a String?
+13. What is the difference between mutable and immutable objects?
+14. What happens if you concatenate Strings using + operator?
+15. What is the difference between == and equals() in Strings?
+16. What is the difference between compareTo() and equals()?
+17. Can String be extended (inheritance)? Why or why not?
+18. Difference between substring() and subSequence()?
+19. What is StringBuffer class in Java?
+20. Is StringBuffer mutable or immutable? Is StringBuffer thread-safe? Why?
+21. Difference between append() and insert() methods?
+22. What is the default capacity of StringBuffer?
+23. How does the capacity of StringBuffer increase dynamically?
+24. What is StringBuilder in Java?
+25. Difference between StringBuffer and Stringbuilder?
+26. Is Stringbuilder thread-safe? Why or why not?
+27. When should you use Stringbuilder over StringBuffer?
+28. What are common methods in Stringbuilder and StringBuffer?
+29. Which one is best for frequent string modification?
+
+30. Which one is best for multithreaded environment and singlethread environment?
+31. Difference between length() method and length property of arrays.
+32. Difference between isEmpty() and isBlank().
+33. Difference between trim() and strip() (introduced in Java 11).
+34. Difference between strip(), stripLeading(), and stripTrailing().
+35. Difference between indexOf() and lastIndexOf().
+36. Difference between split() and join() (breaking vs combining).
+37. Difference between valueOf() and toString().
+22. Write a program to reverse a string.
+23. Write a program to check if a string is a palindrome.
+24. Count the number of vowels and consonants in a string.
+25. Count the number of words in a string.
+26. Convert a string to uppercase and lowercase.
+27. Find the length of a string without using length().
+28. Count the frequency of a given character in a string.
+29. Check whether a string contains only digits.
+30. Remove all white spaces from a string.
+31. Compare two strings without using equals().
+32. Find the first non-repeated character in a string.
+33. Count the occurrences of each character in a string.
+34. Check if two strings are anagrams of each other.
+35. Remove duplicate characters from a string.
+36. Swap case of each character (uppercase → lowercase, lowercase → uppercase).
+37. Reverse each word in a sentence (not the full string).
+38. Find the largest and smallest word in a sentence.
+39. Count special characters, digits, and alphabets separately.
+40. Check if a string is a pangram (contains all letters A–Z).
+41. Given a string s, representing a large integer, the task is to return the largest-valued odd integer (as a
+string) that is a substring of the given string s.
+The number returned should not have leading zero's. But the given input string may have leading zero?
+
+42. Write a function to find the longest common prefix string amongst an array of strings. If there is no
+common prefix, return an empty string ""?
+43. Given two strings s and t, determine if they are isomorphic. Two strings s and t are isomorphic if the
+characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while preserving the order of
+characters. No two characters may map to the same character, but a character may map to itself?
+44. Write a program to check if one string can become another by shifting its characters to the right in Java?"
+45. You are given a string s. Return the array of unique characters, sorted by highest to lowest occurring
+characters?
+46. Write a program to Count Number of Substrings in a given String?
+47. Given a string s, return the longest palindromic substring in s?
+48. Find The beauty of a string is defined as the difference between the frequency of the most
+frequent character and the least frequent character (excluding characters that do not appear) in that
+string?
+49. Validate email format using regex.
+50. Validate mobile number using regex.
+51. Write a Java program to check whether a given string containing parentheses (), curly braces {}, and
+square brackets [] is valid or not?
+ ({[]})valid ([)]invalid
+-----------------------

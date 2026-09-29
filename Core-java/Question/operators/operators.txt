@@ -1,0 +1,224 @@
+OPERATORS
+1. INCREMENT & DECREMENT OPERATORS
+Used to increase or decrease a variable’s value by 1.
+++ (increment), -- (decrement)
+Interview Questions
+
+1. What are increment and decrement operators in Java?
+2. What is the difference between pre-increment and post-increment?
+3. What happens if you use increment operators on a final variable?
+4. Can you use increment operators on boolean values or reference types? Why or why not?
+Programs
+Predict the output:
+int a = 5;
+int b = ++a + a++;
+System.out.println(b);
+1. Write a program to demonstrate the difference between a++ and ++a
+2. What is the output? Explain the order of increment/decrement.
+int a = 5;
+ int b = a++ + ++a + --a + a--;
+ System.out.println(a + " " + b);
+
+3. What will be printed? (Hint: post vs pre increment difference)
+int x = 10;
+ System.out.println(x++ + ++x + x);
+
+
+=============
+1)What are arithmetic operators in Java?
+2)What happens when we divide numbers of different types in Java (int and float)?
+For example:
+int / int
+float / int
+int / float
+float / float
+3)What happens when you divide by zero using integer division?
+4)What is the difference between / and % operators?
+5)Can arithmetic operators be overloaded in Java?
+Programs
+1. Write a program to perform all arithmetic operations on two numbers.
+2. Predict the output:
+ int a = 10, b = 3;
+ System.out.println(a / b);
+ System.out.println(a % b);
+
+---------------------------------------
+1. What is the output of each line? Why?
+int a = 10, b = 3;
+ System.out.println(a / b);
+ System.out.println(a % b);
+ System.out.println(a * b - a / b + b);
+2. Predict output and explain operator precedence.
+int x = 5;
+ x = x * (x + 2) / (x - 3);
+ System.out.println(x);
+
+
+--------------------------------------------
+1) What are relational operators used for?
+2) What is the difference between == and equals()?
+3) Can relational operators be used with boolean values?
+4) What will be the output of 5 == 5.0?
+5) What is the return type of a relational expression?
+6) What is the difference between = and == in java?
+Programs
+1. Write a program to compare two numbers and print the larger one.
+2. Predict the output:
+System.out.println('A' < 'a');
+3. What values will be printed?
+int a = 10, b = 20, c = 10;
+ System.out.println(a == b);
+ System.out.println(a<=c);
+
+System.out.println(a != c);
+4. Why is the comparison between char and double valid?
+System.out.println('A' < 'a');
+ System.out.println(5 == 5.0);
+
+
+------------------------------------------------------------------
+
+
+1. What are logical operators in Java?
+2. What is short-circuit evaluation?
+3. What is the difference between & and &&?
+4. What is the result of combining true/false values using logical operators?
+5. Can logical operators be applied to non-boolean operands?
+Programs:
+1. Write a program to check if a number is within a specific range.
+2. Predict the output:
+int a = 5, b = 10;
+System.out.println(a > 2 && b < 5);
+3. Explain how short-circuiting affects evaluation.
+int a = 10, b = 5, c = 20;
+ System.out.println(a > b && a < c);
+ System.out.println(a > b || a > c);
+ System.out.println(!(a < c));
+4. What will be printed? What happens if you change && to &?
+int x = 5;
+ if (x > 0 && ++x > 5)
+ System.out.println(x);
+
+
+
+---------------------------------------------------------------------------------
+
+1. What is the purpose of the negation operator !?
+2. Can the negation operator be used with integers?
+3. What is the output of !(true && false)?
+4. How does negation work with multiple conditions?
+Programs
+1. Write a program to check if a user is not eligible for voting using !.
+2. What do the two lines print?
+boolean flag = false;
+ System.out.println(!flag);
+ System.out.println(!!flag);
+3. What is the final output?
+int a = 10, b = 20;
+System.out.println(!(a > b));
+
+
+1. What is the assignment operator in Java?
+2. What does x += y mean?
+3. Can you chain assignment operators like a = b = c = 10?
+Programs
+1. Write a program using compound assignment operators to update a variable.
+2. What is the output? Which operator executes first?
+
+int x = 5;
+ x += 3 * 2;
+ System.out.println(x);
+3. What will be printed and why?
+int a, b, c;
+ a = b = c = 10;
+ System.out.println(a + b + c);
+
+
+
+------------------------------------------
+
+
+1. What are bitwise operators used for?
+2. What does >> and >>> mean?
+3. What is the effect of the ~ operator?
+4. Are bitwise operations faster than arithmetic operations?
+Programs
+1. Write a program to swap two numbers using bitwise XOR.
+2. Predict the output:
+int a = 5, b = 3;
+System.out.println(a & b);
+System.out.println(a | b);
+System.out.println(a ^ b);
+3. What is left shift and right shift doing here?
+int x = 8;
+ System.out.println(x << 2);
+ System.out.println
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+1. What are boolean operators in Java?
+2. What is the default value of a boolean variable?
+3. Difference between Boolean (wrapper class) and boolean (primitive type)?
+4. Can boolean be converted to int directly?
+Programs
+1. Write a program using boolean variables to check eligibility for driving.
+2. What is the value of result?
+Boolean x = true, y = false;
+ boolean result = x && !y;
+ System.out.println(result);
+3. What will be printed?
+Boolean a = true;
+ a = !a || false;
+ System.out.println(a);
+
+
+1. What is the ternary operator in Java?
+2. Can a ternary operator replace an if-else statement?
+3. What is the syntax of a ternary operator?
+4. Can we have nest ternary operators in java? Give example?
+Programs
+1. Write a program to find the maximum of two numbers using a ternary operator.
+2. Write a program to check if a number is even or odd using ternary operators
+
+
+3. What is the output? Can you rewrite this using if-else?
+Int a = 10, b = 20;
+ int max = (a > b) ? a : b;
+ System.out.println(max);
+4. What will be printed for x = 5, x = 6, and x = 8?
+Int x = 5;
+ String result = (x % 2 == 0) ? “Even” : (x > 5 ? “Greater” : “Odd”);
+ System.out.println(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
