@@ -25,7 +25,7 @@ public String bitwiseLeftShift(int a, int b){
 public String bitwiseRightShift(int a, int b){
 	int c= a>>b;
 	  //a/ 2^n
-	 //5 / 2 1 =10
+	 //5 / 2 1 =2
 	return "Our bitwise Right Shift Value = "+ c;
 }
 

@@ -18,11 +18,10 @@ public int AssOperators(int c, int e){
 public String ternaryOp(int a, int b){
 	return (a>b)?"A greater than B":"A less than B"; 
 }
-
 void main(){
 	String str=doubleEquals(10,20);
 	IO.println(str);
 	IO.println(logicalOperators(0,8));
 	IO.println(AssOperators(0,8));
-	IO.println(ternaryOp(0,8));
+	IO .println(ternaryOp(0,8));
 }

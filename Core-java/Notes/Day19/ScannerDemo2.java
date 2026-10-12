@@ -53,6 +53,56 @@ do while switch
 
 
 
+//-->
+Student class
+1. sId (int) 
+2. SName (String)
+3. SphoneNo(Long)
+...
+
+one more Class School
+1.  i store Student Information 
+
+ScId;
+SCName;
+...
+ScStd [];  // : Std Detail 
+
+public Student [] insert(Student []){
+	for....
+	// store data of std in 
+	we store data in array
+	i will student 
+	to method calleer
+	
+}
+public Student [] view(){
+	foe ....print
+}
+public String upadtestd(int sid){
+	while /for loop
+	search --> Std2--> update get /set
+}
+public String 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
