@@ -1,0 +1,237 @@
+Java Constructor Chaining — 10 Interview Questions
+======================================================
+
+Instructions:
+- No initializer blocks or static blocks.
+- Predict the output for each question.
+- For compilation-error questions, explain why the code does not compile.
+
+Q1. Basic constructor chaining using this()
+-------------------------------------------
+What will be the output?
+
+class Student {
+    Student() {
+        this(10);
+        System.out.println("Default Constructor");
+    }
+
+    Student(int x) {
+        System.out.println("Parameterized Constructor");
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+    }
+}
+
+
+Q2. Constructor chaining with multiple levels
+----------------------------------------------
+Predict the output.
+
+class Demo {
+    Demo() {
+        this(10);
+        System.out.println("A");
+    }
+
+    Demo(int x) {
+        this("Java");
+        System.out.println("B");
+    }
+
+    Demo(String s) {
+        System.out.println("C");
+    }
+
+    public static void main(String[] args) {
+        new Demo();
+    }
+}
+
+
+Q3. Constructor chaining using super()
+--------------------------------------
+What will be the output?
+
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child Constructor");
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+
+Q4. Using both this() and super()
+---------------------------------
+Will this program compile? Explain why.
+
+class Parent {
+    Parent() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        this(10);
+        super();
+    }
+
+    Child(int x) {
+        System.out.println("Child: " + x);
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+
+Q5. Constructor chaining in a three-level inheritance hierarchy
+---------------------------------------------------------------
+Predict the output.
+
+class A {
+    A() {
+        System.out.println("A");
+    }
+}
+
+class B extends A {
+    B() {
+        System.out.println("B");
+    }
+}
+
+class C extends B {
+    C() {
+        System.out.println("C");
+    }
+
+    public static void main(String[] args) {
+        new C();
+    }
+}
+
+
+Q6. Parameterized parent constructor
+------------------------------------
+Will the following code compile? If not, how would you fix it?
+
+class Parent {
+    Parent(int x) {
+        System.out.println("Parent: " + x);
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child");
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+
+Q7. this() and constructor execution order
+------------------------------------------
+What will be the output?
+
+class Test {
+    Test() {
+        this(100);
+        System.out.println("First");
+    }
+
+    Test(int x) {
+        System.out.println("Second: " + x);
+    }
+
+    Test(String s) {
+        this();
+        System.out.println("Third: " + s);
+    }
+
+    public static void main(String[] args) {
+        new Test("Java");
+    }
+}
+
+
+Q8. Can constructor chaining create a cycle?
+--------------------------------------------
+Does this code compile? If not, identify the problem.
+
+class Demo {
+    Demo() {
+        this(10);
+    }
+
+    Demo(int x) {
+        this();
+    }
+
+    public static void main(String[] args) {
+        new Demo();
+    }
+}
+
+
+Q9. Constructor chaining with overloading and inheritance
+---------------------------------------------------------
+Predict the output.
+
+class Parent {
+    Parent(int x) {
+        System.out.println("Parent: " + x);
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        this(20);
+        System.out.println("Child Default");
+    }
+
+    Child(int x) {
+        super(x);
+        System.out.println("Child Parameterized");
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+
+Q10. Tricky question: constructor call restrictions
+---------------------------------------------------
+Will this code compile? Explain the reason.
+
+class Demo {
+    Demo() {
+        System.out.println("Default");
+    }
+
+    Demo(int x) {
+        System.out.println("Parameterized");
+        this();
+    }
+
+    public static void main(String[] args) {
+        new Demo(10);
+    }
+}
