@@ -1,0 +1,436 @@
+Java Interview Practice: Variables + Constructors
+=================================================
+
+Instructions:
+1. Predict the output before running each program.
+2. Track static variables separately from each object's instance variables.
+3. Treat constructor parameters and local variables as separate from fields, even when they share the same name.
+4. For constructor chaining, write down the order in which constructor bodies execute.
+5. For compilation-error questions, explain the Java rule and correct the code.
+
+Q1. Constructor changes a static variable
+-----------------------------------------
+class Q1 {
+    static int x = 10;
+    int y = 20;
+
+    Q1() {
+        x++;
+        y++;
+    }
+
+    public static void main(String[] args) {
+        Q1 a = new Q1();
+        Q1 b = new Q1();
+
+        a.x = a.x + 5;
+        a.y = a.y + 5;
+
+        System.out.println(a.x + " " + a.y);
+        System.out.println(b.x + " " + b.y);
+    }
+}
+
+Task: Predict the output.
+
+
+Q2. Constructor parameter shadows an instance variable
+------------------------------------------------------
+class Q2 {
+    int x = 10;
+
+    Q2(int x) {
+        x = x + 5;
+    }
+
+    void display() {
+        System.out.println(x);
+    }
+
+    public static void main(String[] args) {
+        Q2 obj = new Q2(100);
+        obj.display();
+    }
+}
+
+Task: What is the value of x? Why?
+
+
+Q3. Constructor chaining with this()
+------------------------------------
+class Q3 {
+    static int a = 1;
+    int b = 2;
+
+    Q3() {
+        this(10);
+        a++;
+        b++;
+    }
+
+    Q3(int x) {
+        a += x;
+        b += x;
+    }
+
+    public static void main(String[] args) {
+        Q3 obj = new Q3();
+
+        System.out.println(a);
+        System.out.println(obj.b);
+    }
+}
+
+Task: Dry-run the constructor calls in order.
+
+
+Q4. Constructor overloading
+---------------------------
+class Q4 {
+    static int count;
+    int value;
+
+    Q4() {
+        count++;
+        value = 10;
+    }
+
+    Q4(int value) {
+        count++;
+        this.value = value;
+    }
+
+    public static void main(String[] args) {
+        Q4 a = new Q4();
+        Q4 b = new Q4(50);
+        Q4 c = new Q4();
+
+        b.value = a.value + c.value;
+
+        System.out.println(count);
+        System.out.println(a.value + " " + b.value + " " + c.value);
+    }
+}
+
+Task: How many times does a constructor execute, and which constructor is selected for each object?
+
+
+Q5. Static initialization versus constructor execution
+------------------------------------------------------
+class Q5 {
+    static int x = 5;
+    int y = x++;
+
+    Q5() {
+        x += 2;
+        y += x;
+    }
+
+    public static void main(String[] args) {
+        Q5 a = new Q5();
+        Q5 b = new Q5();
+
+        System.out.println(x);
+        System.out.println(a.y);
+        System.out.println(b.y);
+    }
+}
+
+Task: Remember that y is initialized separately for every object.
+
+
+Q6. Local variable, instance variable, and constructor
+------------------------------------------------------
+class Q6 {
+    int x = 10;
+    static int y = 20;
+
+    Q6() {
+        int x = 5;
+        y += x;
+        this.x += y;
+    }
+
+    void show() {
+        int y = 3;
+        System.out.println(x + " " + y + " " + Q6.y);
+    }
+
+    public static void main(String[] args) {
+        Q6 a = new Q6();
+        Q6 b = new Q6();
+
+        a.show();
+        b.show();
+    }
+}
+
+Task: Identify which x and y each statement accesses.
+
+
+Q7. Constructor executes even when the reference is reassigned
+--------------------------------------------------------------
+class Q7 {
+    static int count = 0;
+    int id;
+
+    Q7() {
+        count++;
+        id = count;
+    }
+
+    public static void main(String[] args) {
+        Q7 a = new Q7();
+        Q7 b = new Q7();
+
+        a = new Q7();
+
+        System.out.println(count);
+        System.out.println(a.id);
+        System.out.println(b.id);
+    }
+}
+
+Task: Does assigning a new object to a modify the object referenced by b?
+
+
+Q8. Constructor parameter modifies static state
+------------------------------------------------
+class Q8 {
+    static int total = 100;
+    int value;
+
+    Q8(int total) {
+        total += 10;
+        this.total += total;
+        value = total;
+    }
+
+    public static void main(String[] args) {
+        Q8 a = new Q8(5);
+        Q8 b = new Q8(15);
+
+        System.out.println(Q8.total);
+        System.out.println(a.value);
+        System.out.println(b.value);
+    }
+}
+
+Task: Distinguish between the parameter total and the static variable total.
+
+
+Q9. Constructor calls another constructor
+-----------------------------------------
+class Q9 {
+    static int x = 0;
+    int y = 0;
+
+    Q9() {
+        this(5);
+        x++;
+        y++;
+    }
+
+    Q9(int n) {
+        x += n;
+        y += n;
+    }
+
+    public static void main(String[] args) {
+        Q9 a = new Q9();
+        Q9 b = new Q9(2);
+
+        System.out.println(x);
+        System.out.println(a.y);
+        System.out.println(b.y);
+    }
+}
+
+Task: Count the effects of both constructor bodies for each object.
+
+
+Q10. Initialization order and constructor
+-----------------------------------------
+class Q10 {
+    static int a = initializeStatic();
+    int b = initializeInstance();
+
+    static int initializeStatic() {
+        System.out.println("Static initialization");
+        return 10;
+    }
+
+    int initializeInstance() {
+        System.out.println("Instance initialization");
+        return 20;
+    }
+
+    Q10() {
+        System.out.println("Constructor");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Main starts");
+
+        Q10 first = new Q10();
+        Q10 second = new Q10();
+    }
+}
+
+Task: Write the exact output order. Do not focus only on the variable values.
+
+
+Q11. Constructor changes an array instance variable
+---------------------------------------------------
+class Q11 {
+    static int count = 0;
+    int[] data;
+
+    Q11() {
+        count++;
+        data = new int[]{count, count * 10};
+    }
+
+    void update() {
+        data[0] += count;
+        data[1] += data[0];
+    }
+
+    public static void main(String[] args) {
+        Q11 a = new Q11();
+        Q11 b = new Q11();
+
+        a.update();
+        b.update();
+        a.update();
+
+        System.out.println(count);
+        System.out.println(a.data[0] + " " + a.data[1]);
+        System.out.println(b.data[0] + " " + b.data[1]);
+    }
+}
+
+Task: Why does count being static not make data shared?
+
+
+Q12. Constructor parameter and local variable with the same name
+----------------------------------------------------------------
+class Q12 {
+    int number = 10;
+    static int count = 0;
+
+    Q12(int number) {
+        int result = number;
+        number += 5;
+        this.number += number;
+        count += result;
+    }
+
+    public static void main(String[] args) {
+        Q12 a = new Q12(2);
+        Q12 b = new Q12(4);
+
+        System.out.println(a.number);
+        System.out.println(b.number);
+        System.out.println(count);
+    }
+}
+
+Task: Track the parameter, local variable, instance field, and static field separately.
+
+
+Q13. Static variable in constructor chaining
+--------------------------------------------
+class Q13 {
+    static int x = 1;
+    int y = 1;
+
+    Q13() {
+        this(3);
+        x *= 2;
+        y *= 2;
+    }
+
+    Q13(int n) {
+        x += n;
+        y += n;
+    }
+
+    public static void main(String[] args) {
+        Q13 a = new Q13();
+        Q13 b = new Q13();
+
+        System.out.println(x);
+        System.out.println(a.y);
+        System.out.println(b.y);
+    }
+}
+
+Task: Which constructor executes first for each object, and when does the no-argument constructor continue?
+
+
+Q14. Object references and constructor-created state
+----------------------------------------------------
+class Q14 {
+    static int nextId = 1;
+    int id;
+    int value = 10;
+
+    Q14() {
+        id = nextId++;
+        value += id;
+    }
+
+    public static void main(String[] args) {
+        Q14 a = new Q14();
+        Q14 b = a;
+        Q14 c = new Q14();
+
+        b.value += 5;
+        c.value += a.id;
+
+        System.out.println(a.id + " " + a.value);
+        System.out.println(b.id + " " + b.value);
+        System.out.println(c.id + " " + c.value);
+        System.out.println(nextId);
+    }
+}
+
+Task: Draw the reference diagram before calculating the output.
+
+
+Q15. Find the compilation errors
+--------------------------------
+class Q15 {
+    static int a = 10;
+    int b = 20;
+
+    Q15() {
+        int c = 30;
+    }
+
+    static void display() {
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+    }
+
+    public static void main(String[] args) {
+        Q15 obj = new Q15();
+        obj.display();
+    }
+}
+
+Task:
+1. Identify every compilation problem.
+2. Correct the program without making b static.
+3. Explain why c cannot be accessed inside display().
+
+
+Final challenge rules
+---------------------
+- Do not execute the programs until you have predicted the output.
+- Track static variables in one column and each object's instance variables in separate columns.
+- Treat constructor parameters and local variables as separate from fields, even when they share the same name.
+- For constructor chaining, record the exact order in which constructor bodies execute.
+- For compilation-error questions, explain the Java rule—not just the line that fails.
