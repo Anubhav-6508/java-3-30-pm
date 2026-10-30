@@ -1,0 +1,688 @@
+Question 1 – Static and Instance Initialization
+class Test {
+    static int a = 10;
+    int b = 20;
+
+    static {
+        a = a++ + ++a;
+    }
+
+    {
+        b = b++ + ++b;
+    }
+
+    Test() {
+        a++;
+        b++;
+    }
+
+    void display() {
+        System.out.println(a + " " + b);
+    }
+
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test();
+
+        t1.display();
+        t2.display();
+    }
+}
+
+
+Question 2 – Multiple Static and Instance Blocks
+class Example {
+
+    static int x = 10;
+    int y = 20;
+
+    static {
+        x += 5;
+        System.out.println("Static 1: " + x);
+    }
+
+    {
+        y += 10;
+        System.out.println("Instance 1: " + y);
+    }
+
+    static {
+        x *= 2;
+        System.out.println("Static 2: " + x);
+    }
+
+    {
+        y *= 2;
+        System.out.println("Instance 2: " + y);
+    }
+
+    Example() {
+        x++;
+        y++;
+        System.out.println("Constructor: " + x + " " + y);
+    }
+
+    public static void main(String[] args) {
+        Example e1 = new Example();
+        Example e2 = new Example();
+    }
+}
+
+
+Question 3 – Constructor Chaining with Instance Blocks
+class Student {
+
+    static int count = 0;
+    int id = 100;
+
+    {
+        id += 10;
+        count++;
+        System.out.println("Instance Block: " + id);
+    }
+
+    Student() {
+        this(50);
+        System.out.println("Default Constructor");
+    }
+
+    Student(int id) {
+        this.id = id;
+        System.out.println("Parameterized Constructor: " + id);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student(200);
+
+        System.out.println(count);
+    }
+}
+
+
+Question 4 – Static Variable Hiding and Instance Variables
+class Demo {
+
+    static int x = 10;
+    int y = 20;
+
+    Demo(int x, int y) {
+        x = x;
+        y = y;
+    }
+
+    void display() {
+        System.out.println(x + " " + y);
+    }
+
+    public static void main(String[] args) {
+
+        Demo d1 = new Demo(100, 200);
+        Demo d2 = new Demo(300, 400);
+
+        d1.display();
+        d2.display();
+    }
+}
+
+
+Question 5 – Static Block and Constructor Execution Order
+class Test {
+
+    static int a;
+
+    static {
+        a = 10;
+        System.out.println("Static Block 1: " + a);
+    }
+
+    static {
+        a += 20;
+        System.out.println("Static Block 2: " + a);
+    }
+
+    int b = a++;
+
+    {
+        b += 10;
+        System.out.println("Instance Block: " + b);
+    }
+
+    Test() {
+        b += a;
+        System.out.println("Constructor: " + b);
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("Main Started");
+
+        Test t1 = new Test();
+        Test t2 = new Test();
+
+        System.out.println(a);
+    }
+}
+
+
+Question 6 – Constructor Calling Another Constructor
+class Employee {
+
+    static int count = 0;
+    int salary = 1000;
+
+    {
+        count++;
+        salary += 500;
+    }
+
+    Employee() {
+        this(2000);
+        salary += 100;
+    }
+
+    Employee(int salary) {
+        this.salary += salary;
+        count++;
+    }
+
+    Employee(String name) {
+        this();
+        salary += 300;
+    }
+
+    public static void main(String[] args) {
+
+        Employee e1 = new Employee();
+        Employee e2 = new Employee(5000);
+        Employee e3 = new Employee("Java");
+
+        System.out.println(count);
+        System.out.println(e1.salary);
+        System.out.println(e2.salary);
+        System.out.println(e3.salary);
+    }
+}
+
+
+Question 7 – Static Variable Modification Through Objects
+class Counter {
+
+    static int count = 5;
+    int value = 10;
+
+    Counter() {
+        count++;
+        value += count;
+    }
+
+    public static void main(String[] args) {
+
+        Counter c1 = new Counter();
+        Counter c2 = c1;
+        Counter c3 = new Counter();
+
+        c2.count = 100;
+        c2.value = 200;
+
+        System.out.println(c1.count);
+        System.out.println(c2.count);
+        System.out.println(c3.count);
+
+        System.out.println(c1.value);
+        System.out.println(c2.value);
+        System.out.println(c3.value);
+    }
+}
+
+
+Question 8 – Instance Variable Initialization vs Constructor Parameter
+class Account {
+
+    static int balance = 1000;
+    int amount = 500;
+
+    {
+        amount += balance;
+        balance += 100;
+    }
+
+    Account(int amount) {
+        amount += 200;
+        this.amount += amount;
+        balance += amount;
+    }
+
+    void display() {
+        System.out.println(amount + " " + balance);
+    }
+
+    public static void main(String[] args) {
+
+        Account a1 = new Account(100);
+        Account a2 = new Account(200);
+
+        a1.display();
+        a2.display();
+    }
+}
+
+
+Question 9 – Static Block with Object Creation
+class Sample {
+
+    static int x = 10;
+
+    static {
+        System.out.println("Static Block Started");
+        Sample s = new Sample();
+        x += 20;
+        System.out.println("Static Block Ended");
+    }
+
+    int y = x;
+
+    {
+        y += 10;
+        System.out.println("Instance Block: " + y);
+    }
+
+    Sample() {
+        System.out.println("Constructor: " + y);
+    }
+
+    public static void main(String[] args) {
+        Sample s = new Sample();
+        System.out.println(x + " " + s.y);
+    }
+}
+
+
+Question 10 – Constructor and Initialization Order in Inheritance
+class Parent {
+
+    static int x = 10;
+    int y = 20;
+
+    static {
+        x += 10;
+        System.out.println("Parent Static Block: " + x);
+    }
+
+    {
+        y += 10;
+        System.out.println("Parent Instance Block: " + y);
+    }
+
+    Parent() {
+        x++;
+        y++;
+        System.out.println("Parent Constructor: " + x + " " + y);
+    }
+}
+
+class Child extends Parent {
+
+    static int x = 100;
+    int y = 200;
+
+    static {
+        x += 50;
+        System.out.println("Child Static Block: " + x);
+    }
+
+    {
+        y += 50;
+        System.out.println("Child Instance Block: " + y);
+    }
+
+    Child() {
+        x++;
+        y++;
+        System.out.println("Child Constructor: " + x + " " + y);
+    }
+
+    public static void main(String[] args) {
+        Child c = new Child();
+    }
+}
+
+
+Question 11 – Static Variable and Local Variable Shadowing
+class Test {
+
+    static int x = 10;
+    int y = 20;
+
+    {
+        int x = 100;
+        y += x;
+        System.out.println(x + " " + y);
+    }
+
+    Test() {
+        int y = 200;
+        x += y;
+        this.y += x;
+    }
+
+    static {
+        int x = 50;
+        Test.x += x;
+    }
+
+    public static void main(String[] args) {
+
+        Test t1 = new Test();
+        Test t2 = new Test();
+
+        System.out.println(x);
+        System.out.println(t1.y);
+        System.out.println(t2.y);
+    }
+}
+
+
+Question 12 – Multiple Objects and Constructor Chaining
+class A {
+
+    static int x = 0;
+    int y = 0;
+
+    {
+        x += 2;
+        y += 5;
+    }
+
+    A() {
+        this(10);
+        x++;
+        y++;
+    }
+
+    A(int n) {
+        x += n;
+        y += n;
+    }
+
+    public static void main(String[] args) {
+
+        A a1 = new A();
+        A a2 = new A(20);
+        A a3 = new A();
+
+        System.out.println(x);
+        System.out.println(a1.y);
+        System.out.println(a2.y);
+        System.out.println(a3.y);
+    }
+}
+
+
+Question 13 – Static Variable Initialization and Declaration Order
+class Example {
+
+    static int a = 10;
+    static int b = a + 5;
+
+    static {
+        a = b + 10;
+    }
+
+    static int c = a + b;
+
+    static {
+        b = c - a;
+    }
+
+    int x = a + b;
+
+    {
+        x += c;
+    }
+
+    Example() {
+        x += a + b + c;
+    }
+
+    public static void main(String[] args) {
+
+        Example e1 = new Example();
+        Example e2 = new Example();
+
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(e1.x);
+        System.out.println(e2.x);
+    }
+}
+
+
+Question 14 – Static Method, Instance Method and Initialization Blocks
+class Demo {
+
+    static int a = 10;
+    int b = 20;
+
+    static {
+        a++;
+    }
+
+    {
+        b += a;
+    }
+
+    Demo() {
+        a += b;
+    }
+
+    static void change() {
+        a += 5;
+    }
+
+    void change(int a) {
+        this.a += a;
+        b += Demo.a;
+    }
+
+    public static void main(String[] args) {
+
+        Demo d1 = new Demo();
+        change();
+
+        Demo d2 = new Demo();
+        d1.change(10);
+
+        System.out.println(a);
+        System.out.println(d1.b);
+        System.out.println(d2.b);
+    }
+}
+
+
+Question 15 – Parent Constructor and Child Constructor Chaining
+class Parent {
+
+    static int x = 10;
+    int y = 20;
+
+    {
+        x++;
+        y++;
+    }
+
+    Parent() {
+        x += 5;
+        y += 5;
+    }
+
+    Parent(int n) {
+        this();
+        x += n;
+        y += n;
+    }
+}
+
+class Child extends Parent {
+
+    static int x = 100;
+    int y = 200;
+
+    {
+        x++;
+        y++;
+    }
+
+    Child() {
+        super(10);
+        x += 5;
+        y += 5;
+    }
+
+    public static void main(String[] args) {
+
+        Child c1 = new Child();
+        Child c2 = new Child();
+
+        System.out.println(Parent.x);
+        System.out.println(Child.x);
+        System.out.println(c1.y);
+        System.out.println(c2.y);
+    }
+}
+
+
+Question 16 – Object Creation Inside an Instance Block
+class Test {
+
+    static int count = 0;
+    int value = 10;
+
+    {
+        count++;
+
+        if (count == 1) {
+            Test t = new Test(false);
+            value += t.value;
+        }
+    }
+
+    Test() {
+        value += 20;
+    }
+
+    Test(boolean flag) {
+        value += 50;
+    }
+
+    public static void main(String[] args) {
+
+        Test t1 = new Test();
+        System.out.println(count);
+        System.out.println(t1.value);
+    }
+}
+
+
+Question 17 – Initialization with Static and Instance Variable Dependencies
+class Test {
+
+    static int a = 5;
+    int b = a++;
+
+    static {
+        a += 10;
+    }
+
+    {
+        b += a++;
+    }
+
+    Test() {
+        a += b++;
+    }
+
+    Test(int n) {
+        this();
+        b += n;
+    }
+
+    public static void main(String[] args) {
+
+        Test t1 = new Test();
+        Test t2 = new Test(10);
+
+        System.out.println(a);
+        System.out.println(t1.b);
+        System.out.println(t2.b);
+    }
+}
+
+
+Question 18 – Master Challenge: Everything Combined
+class Parent {
+
+    static int a = 10;
+    int b = 20;
+
+    static {
+        a += 5;
+    }
+
+    {
+        b += a;
+    }
+
+    Parent() {
+        a++;
+        b++;
+    }
+
+    Parent(int n) {
+        this();
+        b += n;
+    }
+}
+
+class Child extends Parent {
+
+    static int a = 100;
+    int b = 200;
+
+    static {
+        a += Parent.a;
+    }
+
+    {
+        b += a;
+    }
+
+    Child() {
+        super(10);
+        a++;
+        b++;
+    }
+
+    Child(int n) {
+        this();
+        b += n;
+        a += n;
+    }
+
+    public static void main(String[] args) {
+
+        Child c1 = new Child();
+        Child c2 = new Child(50);
+
+        System.out.println(Parent.a);
+        System.out.println(Child.a);
+
+        System.out.println(c1.b);
+        System.out.println(c2.b);
+
+        System.out.println(c1 instanceof Parent);
+    }
+}
+
+
