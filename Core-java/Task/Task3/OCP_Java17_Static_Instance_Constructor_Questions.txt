@@ -1,0 +1,832 @@
+
+============================================================
+QUESTION 1 – STATIC INITIALIZATION ORDER
+============================================================
+
+What is the result?
+
+class Alpha {
+    static int first = second + 2;
+    static int second = 5;
+
+    public static void main(String[] args) {
+        System.out.println(first + ":" + second);
+    }
+}
+
+============================================================
+QUESTION 2 – ILLEGAL FORWARD REFERENCE
+============================================================
+
+Which statement is correct?
+
+class Beta {
+    static {
+        value = 20;
+        System.out.println(value);
+    }
+
+    static int value = 10;
+
+    public static void main(String[] args) {
+        System.out.println(value);
+    }
+}
+
+A. It prints 20, then 10.
+B. It prints 10, then 10.
+C. It prints 20, then 20.
+D. Compilation fails because value is an illegal forward reference.
+E. Compilation succeeds, but initialization throws an exception.
+
+============================================================
+QUESTION 3 – INSTANCE INITIALIZATION ORDER
+============================================================
+
+What is printed?
+
+class Gamma {
+    int a = 3;
+    int b = a++ + ++a;
+
+    {
+        a += b;
+    }
+
+    Gamma() {
+        b += a;
+    }
+
+    public static void main(String[] args) {
+        Gamma g = new Gamma();
+        System.out.println(g.a + ":" + g.b);
+    }
+}
+
+A. 13:21
+B. 8:19
+C. 9:17
+D. 9:20
+E. Compilation fails.
+
+============================================================
+QUESTION 4 – CONSTRUCTOR CHAINING
+============================================================
+
+What is the output?
+
+class Delta {
+    static int count;
+    int value = 1;
+
+    {
+        count++;
+        value += 2;
+    }
+
+    Delta() {
+        this(4);
+        value++;
+    }
+
+    Delta(int n) {
+        value += n;
+        count++;
+    }
+
+    public static void main(String[] args) {
+        Delta d = new Delta();
+        System.out.println(d.value + ":" + count);
+    }
+}
+
+A. 7:1
+B. 8:2
+C. 9:2
+D. 8:1
+E. Compilation fails.
+
+============================================================
+QUESTION 5 – FIELD HIDING AND REFERENCE TYPE
+============================================================
+
+What is printed?
+
+class Parent {
+    static int code = 10;
+    int number = 20;
+}
+
+class Child extends Parent {
+    static int code = 100;
+    int number = 200;
+}
+
+class Runner {
+    public static void main(String[] args) {
+        Parent ref = new Child();
+
+        System.out.println(ref.code);
+        System.out.println(ref.number);
+        System.out.println(((Child) ref).code);
+        System.out.println(((Child) ref).number);
+    }
+}
+
+A.
+10
+20
+100
+200
+
+B.
+100
+200
+100
+200
+
+C.
+10
+200
+100
+20
+
+D.
+100
+20
+10
+200
+
+E. Compilation fails.
+
+============================================================
+QUESTION 6 – STATIC BLOCK AND OBJECT CREATION
+============================================================
+
+What is printed?
+
+class Zeta {
+    static int total = 1;
+
+    static {
+        Zeta z = new Zeta();
+        total += 10;
+    }
+
+    {
+        total += 2;
+    }
+
+    Zeta() {
+        total += 3;
+    }
+
+    public static void main(String[] args) {
+        new Zeta();
+        System.out.println(total);
+    }
+}
+
+A. 14
+B. 16
+C. 17
+D. 21
+E. Compilation fails.
+
+============================================================
+QUESTION 7 – INSTANCE FIELD INITIALIZER AND CONSTRUCTOR PARAMETER
+============================================================
+
+What is the output?
+
+class Eta {
+    int value = 10;
+
+    {
+        value += 5;
+    }
+
+    Eta(int value) {
+        value += 2;
+        this.value += value;
+    }
+
+    public static void main(String[] args) {
+        Eta e1 = new Eta(3);
+        Eta e2 = new Eta(7);
+
+        System.out.println(e1.value + ":" + e2.value);
+    }
+}
+
+A. 20:24
+B. 18:22
+C. 20:22
+D. 18:24
+E. Compilation fails.
+
+============================================================
+QUESTION 8 – STATIC METHOD AND INSTANCE FIELD
+============================================================
+
+Which statement is correct?
+
+class Theta {
+    int instanceValue = 10;
+    static int classValue = 20;
+
+    static void show() {
+        System.out.println(classValue);
+        System.out.println(instanceValue);
+    }
+
+    public static void main(String[] args) {
+        show();
+    }
+}
+
+A. It prints 20 and 10.
+B. It prints 20 and then throws NullPointerException.
+C. Compilation fails because a static method cannot directly access instanceValue.
+D. Compilation fails because show() cannot be called from main().
+E. It prints 0 and 0.
+
+============================================================
+QUESTION 9 – MULTIPLE CONSTRUCTORS AND INITIALIZER BLOCK
+============================================================
+
+What is printed?
+
+class Iota {
+    static int created;
+    int value = 10;
+
+    {
+        created++;
+        value *= 2;
+    }
+
+    Iota() {
+        this(5);
+        value++;
+    }
+
+    Iota(int n) {
+        value += n;
+    }
+
+    Iota(String text) {
+        this();
+        value += text.length();
+    }
+
+    public static void main(String[] args) {
+        Iota a = new Iota();
+        Iota b = new Iota("OCP");
+
+        System.out.println(created);
+        System.out.println(a.value);
+        System.out.println(b.value);
+    }
+}
+
+A.
+2
+26
+29
+
+B.
+2
+26
+32
+
+C.
+3
+26
+29
+
+D.
+2
+26
+30
+
+E. Compilation fails.
+
+============================================================
+QUESTION 10 – THREE LEVELS OF INITIALIZATION
+============================================================
+
+What is the exact output?
+
+class A {
+    static { System.out.println("A-static"); }
+    { System.out.println("A-instance"); }
+    A() { System.out.println("A-constructor"); }
+}
+
+class B extends A {
+    static { System.out.println("B-static"); }
+    { System.out.println("B-instance"); }
+    B() { System.out.println("B-constructor"); }
+}
+
+class C extends B {
+    static { System.out.println("C-static"); }
+    { System.out.println("C-instance"); }
+    C() { System.out.println("C-constructor"); }
+
+    public static void main(String[] args) {
+        new C();
+    }
+}
+
+A.
+A-static
+B-static
+C-static
+A-instance
+A-constructor
+B-instance
+B-constructor
+C-instance
+C-constructor
+
+B.
+C-static
+B-static
+A-static
+A-instance
+B-instance
+C-instance
+A-constructor
+B-constructor
+C-constructor
+
+C.
+A-static
+A-instance
+A-constructor
+B-static
+B-instance
+B-constructor
+C-static
+C-instance
+C-constructor
+
+D.
+A-static
+B-static
+A-instance
+A-constructor
+C-static
+B-instance
+B-constructor
+C-instance
+C-constructor
+
+E. Compilation fails.
+
+============================================================
+QUESTION 11 – STATIC FIELD HIDING
+============================================================
+
+What is printed?
+
+class Base {
+    static int value = 4;
+}
+
+class Derived extends Base {
+    static int value = 9;
+}
+
+class Test {
+    public static void main(String[] args) {
+        Base b = new Derived();
+        Derived d = new Derived();
+
+        b.value++;
+        d.value++;
+
+        System.out.println(Base.value);
+        System.out.println(Derived.value);
+    }
+}
+
+A. 4 and 9
+B. 5 and 10
+C. 6 and 10
+D. 6 and 11
+E. Compilation fails.
+
+============================================================
+QUESTION 12 – SUPER CONSTRUCTOR ARGUMENT EVALUATION
+============================================================
+
+What is printed?
+
+class Parent {
+    Parent(int n) {
+        System.out.println("Parent: " + n);
+    }
+}
+
+class Child extends Parent {
+    static int value = 3;
+
+    Child() {
+        super(value++);
+        value += 2;
+        System.out.println("Child: " + value);
+    }
+
+    public static void main(String[] args) {
+        new Child();
+        new Child();
+    }
+}
+
+A.
+Parent: 3
+Child: 6
+Parent: 6
+Child: 9
+
+B.
+Parent: 3
+Child: 5
+Parent: 6
+Child: 8
+
+C.
+Parent: 4
+Child: 6
+Parent: 7
+Child: 9
+
+D.
+Parent: 3
+Child: 6
+Parent: 7
+Child: 10
+
+E. Compilation fails because value cannot be used in super().
+
+============================================================
+QUESTION 13 – OVERRIDDEN METHOD CALLED FROM CONSTRUCTOR
+============================================================
+
+What is the output?
+
+class Parent {
+    int value = 10;
+
+    Parent() {
+        show();
+    }
+
+    void show() {
+        System.out.println("Parent: " + value);
+    }
+}
+
+class Child extends Parent {
+    int value = 20;
+
+    {
+        value = 30;
+    }
+
+    @Override
+    void show() {
+        System.out.println("Child: " + value);
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+A. Parent: 10
+B. Child: 20
+C. Child: 0
+D. Parent: 10 followed by Child: 30
+E. Compilation fails.
+
+============================================================
+QUESTION 14 – FIELD INITIALIZER AND OVERRIDDEN METHOD
+============================================================
+
+What is printed?
+
+class Parent {
+    Parent() {
+        print();
+    }
+
+    void print() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    int x = 100;
+
+    {
+        x = 200;
+    }
+
+    @Override
+    void print() {
+        System.out.println(x);
+    }
+
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+
+A. 100
+B. 200
+C. 0
+D. Parent
+E. Compilation fails.
+
+============================================================
+QUESTION 15 – FORWARD REFERENCE IN INSTANCE INITIALIZATION
+============================================================
+
+Which statement is correct?
+
+class Lambda {
+    {
+        first = 10;
+        System.out.println(first);
+    }
+
+    int first = 5;
+
+    public static void main(String[] args) {
+        System.out.println(new Lambda().first);
+    }
+}
+
+A. It prints 10 and 10.
+B. It prints 5 and 5.
+C. It prints 10 and 5.
+D. Compilation fails because first is an illegal forward reference.
+E. Compilation succeeds but throws an exception.
+
+============================================================
+QUESTION 16 – CHOOSE TWO: STATIC CONTEXT
+============================================================
+
+Which TWO statements compile?
+
+class Mu {
+    int x = 10;
+    static int y = 20;
+
+    static {
+        System.out.println(y);
+        // INSERT ONE STATEMENT HERE
+    }
+
+    public static void main(String[] args) {
+    }
+}
+
+A. System.out.println(x);
+B. System.out.println(new Mu().x);
+C. System.out.println(Mu.y);
+D. System.out.println(this.y);
+E. System.out.println(Mu.x);
+
+Choose TWO answers.
+
+============================================================
+QUESTION 17 – CONSTRUCTOR INVOCATION RULES
+============================================================
+
+Which constructor declaration is valid in Java SE 17?
+
+A.
+class A {
+    A() {
+        System.out.println("A");
+        this(10);
+    }
+}
+
+B.
+class B {
+    B() {
+        this(10);
+        System.out.println("B");
+    }
+    B(int n) {}
+}
+
+C.
+class C {
+    C() {
+        super();
+        this(10);
+    }
+    C(int n) {}
+}
+
+D.
+class D {
+    D() {
+        this();
+    }
+}
+
+E.
+class E {
+    E() {
+        return 1;
+    }
+}
+
+============================================================
+QUESTION 18 – OBJECT REFERENCE ALIASING
+============================================================
+
+What is printed?
+
+class Nu {
+    static int shared = 1;
+    int local = 10;
+
+    Nu() {
+        shared++;
+        local += shared;
+    }
+
+    public static void main(String[] args) {
+        Nu first = new Nu();
+        Nu second = first;
+        Nu third = new Nu();
+
+        second.local += 5;
+        third.shared += 10;
+
+        System.out.println(first.local);
+        System.out.println(second.local);
+        System.out.println(third.local);
+        System.out.println(shared);
+    }
+}
+
+A.
+17
+17
+13
+13
+
+B.
+19
+19
+13
+13
+
+C.
+17
+17
+15
+13
+
+D.
+14
+14
+15
+13
+
+E. Compilation fails.
+
+============================================================
+QUESTION 19 – CHOOSE TWO: INITIALIZATION AND DEFAULT VALUES
+============================================================
+
+Which TWO statements are correct?
+
+class Xi {
+    static int a;
+    int b;
+
+    static {
+        a = 7;
+    }
+
+    {
+        b = 9;
+    }
+
+    public static void main(String[] args) {
+        Xi x = new Xi();
+        int c;
+        System.out.println(a + x.b);
+        // System.out.println(c);
+    }
+}
+
+A. a receives the default value 0 before its static initializer runs.
+B. b receives the default value 0 before its instance initializer runs.
+C. c receives the default value 0.
+D. The code fails to compile because a is not explicitly initialized at declaration.
+E. The code fails to compile because b is not explicitly initialized at declaration.
+
+Choose TWO answers.
+
+============================================================
+QUESTION 20 – COMBINED OCP CHALLENGE
+============================================================
+
+What is the exact output?
+
+class Parent {
+    static int count = 1;
+    int value = 10;
+
+    static {
+        count += 2;
+    }
+
+    {
+        value += count;
+        count++;
+    }
+
+    Parent() {
+        value += count;
+    }
+
+    Parent(int n) {
+        this();
+        value += n;
+    }
+}
+
+class Child extends Parent {
+    static int count = 10;
+    int value = 100;
+
+    static {
+        count += Parent.count;
+    }
+
+    {
+        value += count;
+    }
+
+    Child() {
+        super(5);
+        count++;
+        value++;
+    }
+
+    Child(int n) {
+        this();
+        value += n;
+    }
+
+    public static void main(String[] args) {
+        Child c1 = new Child();
+        Child c2 = new Child(3);
+
+        System.out.println(Parent.count);
+        System.out.println(Child.count);
+        System.out.println(c1.value);
+        System.out.println(c2.value);
+    }
+}
+
+A.
+5
+15
+114
+118
+
+B.
+7
+17
+123
+126
+
+C.
+9
+19
+123
+126
+
+D.
+5
+15
+118
+121
+
+E. Compilation fails.
+
+
