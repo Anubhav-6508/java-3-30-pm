@@ -1,0 +1,95 @@
+
+
+
+  ----------------------------------
+  QUESTION 1: EMPLOYEE INFORMATION
+  ----------------------------------
+
+Create a parent class Employee containing: - employeeId - employeeName -
+salary
+
+Create a child class Developer containing: - programmingLanguage -
+experience
+
+Requirements: 1. Inherit Employee into Developer. 2. Create constructors
+in both classes. 3. Create a Developer object. 4. Display all employee
+and developer information.
+
+  ----------------------------------------
+  QUESTION 2: STUDENT INFORMATION SYSTEM
+  ----------------------------------------
+
+Create a parent class Person containing: - name - age - gender
+
+Create a child class Student containing: - rollNumber - course - marks
+
+Requirements: 1. Use inheritance. 2. Initialize parent properties using
+a constructor. 3. Initialize child properties using a constructor. 4.
+Create multiple Student objects.
+
+  --------------------------------
+  QUESTION 3: VEHICLE MANAGEMENT
+  --------------------------------
+
+Create a parent class Vehicle containing: - brand - model -
+registrationNumber
+
+Create a child class Car containing: - numberOfDoors - fuelType
+
+Requirements: 1. Inherit Vehicle into Car. 2. Create suitable
+constructors in both classes. 3. Initialize all properties. 4. Create at
+least three Car objects. 5. Display complete vehicle and car
+information.
+
+  --------------------------------
+  QUESTION 4: PRODUCT MANAGEMENT
+  --------------------------------
+
+Create a parent class Product containing: - productId - productName -
+price
+
+Create a child class ElectronicProduct containing: - warranty - brand
+
+Requirements: 1. Create a constructor in both classes. 2. Initialize
+parent properties through constructor chaining. 3. Create at least three
+ElectronicProduct objects. 4. Display complete details.
+
+  -------------------------------------
+  QUESTION 5: SUPER KEYWORD PRACTICE
+  -------------------------------------
+
+Create a parent class Mobile containing: - brand - price - model
+
+Create a child class SmartPhone containing: - operatingSystem - ram -
+storage
+
+Requirements: 1. Use super to access parent variables. 2. Use super() to
+invoke the parent constructor. 3. Create constructors in both classes.
+4. Create a SmartPhone object. 5. Display all information.
+
+  ------------------------------------
+  QUESTION 6: ONLINE COURSE DETAILS
+  ------------------------------------
+
+Create a parent class Course containing: - courseId - courseName -
+durationInMonths
+
+Create a child class ProgrammingCourse containing: -
+programmingLanguage - projectCount - mentorName
+
+Requirements: 1. Use single inheritance. 2. Create parameterized
+constructors in both classes. 3. Initialize the parent-class properties
+using super(). 4. Create at least three ProgrammingCourse objects with
+different details. 5. Display all inherited and child-class properties.
+6. Do not use method overriding or method overloading.
+
+  --------------
+  INSTRUCTIONS
+  --------------
+
+1.  Solve each question using Java.
+2.  Use proper class names, variable names, and constructors.
+3.  Do not use method overriding or method overloading.
+4.  Do not use arrays or collections unless a question explicitly asks
+    for them.
+5.  First try to write the code independently, then test it.
