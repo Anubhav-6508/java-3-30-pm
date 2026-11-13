@@ -1,0 +1,146 @@
+------------------------------------------------------------
+QUESTION 1: BANKING MANAGEMENT SYSTEM
+------------------------------------------------------------
+
+Scenario:
+A bank wants to develop a simple banking application where customers can open different types of bank accounts.
+
+Requirements:
+
+1. Create a parent class BankAccount.
+   - Declare accountNumber, accountHolderName, and balance as private variables.
+   - Provide one constructor to initialize these variables.
+   - Provide getters and setters.
+   - Create a method displayAccountDetails().
+
+2. Create two child classes:
+   - SavingsAccount
+   - CurrentAccount
+
+3. Each account type should have its own withdrawal limit:
+   - Savings Account: Maximum withdrawal per transaction is Rs. 25,000.
+   - Current Account: Maximum withdrawal per transaction is Rs. 1,00,000.
+
+4. Display the following menu using a do-while loop:
+
+   1. Display Account Details
+   2. Deposit Money
+   3. Withdraw Money
+   4. Check Balance
+   5. Exit
+
+5. Use switch-case to perform the selected operation.
+
+6. Use if-else to validate:
+   - Deposit amount must be greater than zero.
+   - Withdrawal amount must not exceed the withdrawal limit.
+   - Withdrawal amount must not exceed the available balance.
+
+7. Use inheritance to reuse common account properties and methods.
+
+Sample execution:
+
+Welcome to ABC Bank
+
+Select Account Type:
+1. Savings Account
+2. Current Account
+
+Enter your choice: 1
+
+Enter Account Number: 101
+Enter Account Holder Name: Rahul
+Enter Initial Balance: 50000
+
+1. Display Account Details
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+
+Enter choice: 3
+Enter withdrawal amount: 30000
+
+Withdrawal limit exceeded!
+
+The menu should be displayed again.
+
+------------------------------------------------------------
+QUESTION 2: COLLEGE COURSE REGISTRATION SYSTEM
+------------------------------------------------------------
+
+Scenario:
+A college wants to develop a course registration system where students can register for different courses.
+
+Requirements:
+
+1. Create a parent class Person.
+   - Declare personId, personName, and email as private variables.
+   - Provide one constructor to initialize these variables.
+   - Use getters and setters.
+   - Create a method displayPersonDetails().
+
+2. Create two child classes:
+   - Student
+   - Faculty
+
+3. The Student class should contain:
+   - courseName
+   - courseFee
+   - availableBalance
+   - A variable to track whether the student has registered.
+
+4. The Faculty class should contain:
+   - departmentName
+   - salary
+
+5. Display the following menu for students using a do-while loop:
+
+   1. Display Student Details
+   2. Register for Course
+   3. Pay Course Fee
+   4. Check Available Balance
+   5. Exit
+
+6. Use switch-case to handle menu operations.
+
+7. Use if-else conditions for these validations:
+   - A student cannot register if already registered.
+   - A student cannot pay an amount greater than their available balance.
+   - Course fee must be greater than zero.
+   - A student must register before paying the course fee.
+
+8. Display the available courses when the student selects Register for Course:
+
+   1. Java - Rs. 15,000
+   2. Python - Rs. 12,000
+   3. .NET - Rs. 18,000
+
+9. Use inheritance to reuse the common properties of Person.
+
+Sample execution:
+
+Welcome to ABC College
+
+Enter Student ID: 101
+Enter Student Name: Rahul
+Enter Email: rahul@gmail.com
+Enter Available Balance: 50000
+
+1. Display Student Details
+2. Register for Course
+3. Pay Course Fee
+4. Check Available Balance
+5. Exit
+
+Enter choice: 2
+
+Available Courses:
+1. Java - Rs. 15000
+2. Python - Rs. 12000
+3. .NET - Rs. 18000
+
+Select Course: 1
+
+Successfully Registered for Java!
+
