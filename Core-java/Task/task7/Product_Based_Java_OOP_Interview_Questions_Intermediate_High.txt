@@ -1,0 +1,528 @@
+============================================================
+QUESTION 1 — E-COMMERCE CART & PRODUCT PRICING
+============================================================
+
+A shopping application sells Regular Products, Electronics, and Grocery Items.
+Each product has a product ID, name, base price, and available quantity.
+
+Requirements:
+1. Product ID must be unique within the product objects handled by the program.
+2. Price and quantity cannot be negative.
+3. Electronics may have a warranty charge added to the base price.
+4. Grocery items may have a discount based on their expiry date category
+   (for this assignment, use a simple field such as discount percentage).
+5. Each product type must calculate its final price differently.
+6. A cart must be able to accept different product types and calculate the
+   total without checking each product type in the cart's total-calculation code.
+7. The application must display product details and final price.
+
+Tasks:
+Design the classes and relationships. Implement a demonstration with at least
+one object of each product type.
+
+Interview follow-ups:
+- What should be common in the parent type?
+- Which method should be overridden?
+- How can the cart calculate totals without a long if/else chain based on type?
+- Should product price be public? Why?
+- If a new product category is added, which existing code should ideally remain unchanged?
+
+
+============================================================
+QUESTION 3 — RIDE-HAILING FARE CALCULATOR
+============================================================
+
+A ride-booking application supports Mini, Sedan, and SUV rides.
+
+Requirements:
+1. Each ride stores ride ID, distance, and passenger count.
+2. Distance must be positive.
+3. Mini fare = base fare + distance * mini rate.
+4. Sedan fare = base fare + distance * sedan rate.
+5. SUV fare = base fare + distance * SUV rate.
+6. SUV must reject passenger counts above its capacity.
+7. A booking object should calculate the fare using the ride object it receives,
+   not by checking whether it is Mini, Sedan, or SUV.
+
+Tasks:
+Design the classes and implement a fare-calculation demonstration.
+
+Interview follow-ups:
+- Which method should be abstract?
+- How does runtime polymorphism help the booking component?
+- Why would a type-checking chain in the fare calculator be a maintenance problem?
+- What happens if a new ride category is introduced?
+
+============================================================
+QUESTION 4 — EMPLOYEE PAYROLL PRODUCT
+============================================================
+
+A payroll product supports Permanent Employees, Contract Employees,
+and Interns.
+
+Requirements:
+1. Every employee has employee ID, name, and department.
+2. IDs must be positive; names must not be blank.
+3. Permanent employees receive basic salary plus allowances.
+4. Contract employees are paid based on working days and daily rate.
+5. Interns receive a fixed stipend.
+6. Each employee type calculates its monthly pay differently.
+7. Payroll must process employees through a common employee reference.
+8. Employee details must be displayed without exposing internal fields directly.
+
+Tasks:
+Create the employee hierarchy and demonstrate payroll calculation.
+
+Interview follow-ups:
+- Should Employee be concrete or abstract?
+- Which behavior should be abstract?
+- Which data should be private?
+- Is salary calculation an example of abstraction, polymorphism, or both?
+- How would you add a new employee type without rewriting the payroll loop?
+
+============================================================
+QUESTION 5 — FOOD DELIVERY ORDER & DELIVERY FEE
+============================================================
+
+A food delivery application has Normal Delivery, Express Delivery,
+and Pickup orders.
+
+Requirements:
+1. Every order has order ID, restaurant name, and order amount.
+2. Order amount cannot be negative.
+3. Normal delivery calculates fee using distance.
+4. Express delivery calculates a higher fee and includes a priority charge.
+5. Pickup has no delivery fee.
+6. Every order must calculate its final payable amount.
+7. The checkout code must work with different order types through a common
+   abstraction.
+
+Tasks:
+Design the order model and demonstrate final amount calculation.
+
+Interview follow-ups:
+- Which parts of Order are common?
+- Would you use an abstract class or interface for fee calculation?
+- How could a new delivery mode be introduced?
+- Why should fee calculation not be placed in a central switch statement?
+
+============================================================
+QUESTION 6 — BANK ACCOUNT AND TRANSACTION RULES
+============================================================
+
+A banking application supports Savings Account and Current Account.
+
+Requirements:
+1. Each account has account number, account holder name, and balance.
+2. Account number is read-only after creation.
+3. Balance must not be directly changed by outside code.
+4. Deposit amount must be positive.
+5. Savings accounts must not allow withdrawal below a configured minimum
+   balance.
+6. Current accounts may allow overdraft up to a configured limit.
+7. Both accounts support deposit and withdrawal, but withdrawal rules differ.
+8. The banking service should use a common account reference.
+
+Tasks:
+Design the account types, validate operations, and demonstrate valid and
+invalid transactions.
+
+Interview follow-ups:
+- Why is a public setter for balance dangerous?
+- Is this encapsulation if balance is private but setter allows any value?
+- Which withdrawal behavior should be overridden?
+- Which class should own the common account data?
+- What is the difference between hiding data and protecting business rules?
+
+============================================================
+QUESTION 7 — SUBSCRIPTION BILLING
+============================================================
+
+A streaming product offers Basic, Standard, and Premium subscriptions.
+
+Requirements:
+1. Each subscription has a customer ID, plan name, and monthly base fee.
+2. Basic allows one device and has no premium content.
+3. Standard allows two devices and has selected premium content.
+4. Premium allows four devices and all premium content.
+5. Every plan calculates its monthly bill.
+6. Discounts may be applied using a separate overloaded billing method:
+   calculateBill(), calculateBill(discount), calculateBill(discount, tax).
+7. Invalid discount or tax values must be rejected.
+
+Tasks:
+Design the subscription hierarchy and billing behavior.
+
+Interview follow-ups:
+- What is method overloading being used for here?
+- Which billing behavior is overridden?
+- How can you ensure a discount cannot exceed allowed limits?
+- Is device-limit checking a plan behavior or a property?
+- How would billing code use a parent reference?
+
+============================================================
+QUESTION 8 — HOTEL ROOM BOOKING
+============================================================
+
+A hotel application supports Standard Room, Deluxe Room, and Suite.
+
+Requirements:
+1. Each room has a room number, capacity, and base nightly rate.
+2. Room number must not be changed after construction.
+3. Standard, Deluxe, and Suite calculate nightly prices differently.
+4. Deluxe may include a fixed service charge.
+5. Suite may include a percentage premium.
+6. Booking must reject guest count above room capacity.
+7. A booking accepts a room reference and calculates the bill for a number
+   of nights.
+8. Booking must not need to know the concrete room type.
+
+Tasks:
+Design the room abstraction, booking class, and demonstrate a multi-night bill.
+
+Interview follow-ups:
+- Where would you place capacity validation?
+- Which method should be overridden?
+- What is the HAS-A relationship in this design?
+- Why should Booking contain a Room reference rather than inherit from Room?
+- What happens when another room type is added?
+
+============================================================
+QUESTION 9 — VEHICLE RENTAL PRODUCT
+============================================================
+
+A rental company rents Bikes, Cars, and Vans.
+
+Requirements:
+1. Every vehicle has registration number, brand, and rental rate per day.
+2. Registration number cannot be modified after creation.
+3. Rental days must be greater than zero.
+4. Each vehicle type calculates rental charges differently.
+5. Cars may include an insurance fee.
+6. Vans may include a load-capacity surcharge.
+7. RentalService calculates the cost using a Vehicle reference.
+8. The service must not contain concrete vehicle-type comparisons.
+
+Tasks:
+Create the class design and demonstrate rentals of different vehicle types.
+
+Interview follow-ups:
+- Which relationship is inheritance and which is composition?
+- Why should rental calculation be polymorphic?
+- What data should be encapsulated?
+- Can the parent class constructor be used by child classes?
+- How would you add a new vehicle type?
+
+============================================================
+QUESTION 10 — ONLINE EXAM AND QUESTION TYPES
+============================================================
+
+An exam product supports MCQ, True/False, and Descriptive questions.
+
+Requirements:
+1. Every question has question ID, text, and marks.
+2. Marks must be greater than zero.
+3. MCQ questions store four options and a correct option.
+4. True/False questions store the correct boolean answer.
+5. Descriptive questions store an evaluation guideline, not an automatic answer.
+6. Each question type must display its details differently.
+7. The exam should store questions using a common question reference.
+   For this exercise, use a Question array; do not use Collections.
+8. The exam should display all question details through polymorphism.
+
+Tasks:
+Design the hierarchy and demonstrate an exam containing all three question types.
+
+Interview follow-ups:
+- Should Question be abstract?
+- Can an abstract class have constructor and fields?
+- Which method should be overridden?
+- Why is an array of a parent type useful?
+- How would the exam display each question without instanceof checks?
+
+============================================================
+QUESTION 11 — SMART HOME DEVICE CONTROLLER
+============================================================
+
+A smart-home app controls Light, Fan, and AirConditioner devices.
+
+Requirements:
+1. Each device has device ID, name, and on/off status.
+2. Device ID cannot be modified after creation.
+3. All devices support turnOn() and turnOff().
+4. Light supports brightness adjustment.
+5. Fan supports speed settings.
+6. AirConditioner supports temperature settings.
+7. A controller should operate common device behavior using a common type.
+8. It must not expose internal status fields for direct modification.
+
+Tasks:
+Design the common device abstraction and specialized devices.
+
+Interview follow-ups:
+- Would an interface or abstract class be a better common type?
+- What behavior is common, and what behavior is specialized?
+- Can a reference of the common type call brightness adjustment?
+- How does reference type restrict available operations?
+- How can you prevent invalid brightness, speed, or temperature?
+
+============================================================
+QUESTION 12 — CUSTOMER SUPPORT TICKET PRIORITY
+============================================================
+
+A support application handles Normal, Premium, and Critical tickets.
+
+Requirements:
+1. Each ticket has ticket ID, customer name, and issue description.
+2. Ticket ID must be unique in the demonstration and immutable.
+3. Normal tickets have standard response priority.
+4. Premium tickets receive a faster response target.
+5. Critical tickets receive the highest priority and require escalation.
+6. Every ticket must calculate its response target using its ticket category.
+7. A support dashboard should process tickets through a common ticket reference.
+8. The dashboard should display ticket details and response target.
+
+Tasks:
+Design and demonstrate the ticket hierarchy.
+
+Interview follow-ups:
+- What is the benefit of polymorphism in the dashboard?
+- Which method would be abstract?
+- Should escalation be a separate method or part of overridden behavior?
+- What design would make adding a new ticket category easier?
+- What is the difference between a category field and a subclass in this case?
+
+============================================================
+QUESTION 13 — INSURANCE POLICY PREMIUM
+============================================================
+
+An insurance product offers Health, Vehicle, and Life policies.
+
+Requirements:
+1. Each policy has policy number, customer name, and coverage amount.
+2. Coverage amount must be positive.
+3. Each policy calculates its premium using different rules.
+4. Health policy considers age.
+5. Vehicle policy considers vehicle value.
+6. Life policy considers age and coverage amount.
+7. Policy information must be protected from invalid direct modification.
+8. A premium calculator should work with a common Policy abstraction.
+
+Tasks:
+Design the hierarchy and calculate premiums for sample policies.
+
+Interview follow-ups:
+- Why is premium calculation a good candidate for polymorphism?
+- Which fields should be common to the base type?
+- Should the base class provide a default premium formula?
+- When would an abstract method be more appropriate?
+- How would you add Travel Insurance?
+
+============================================================
+QUESTION 14 — MEDIA PLAYER PRODUCT
+============================================================
+
+A media player supports Audio, Video, and Podcast content.
+
+Requirements:
+1. Each media item has media ID, title, and duration.
+2. Duration must be positive.
+3. Audio displays artist and album.
+4. Video displays resolution and director.
+5. Podcast displays host and episode number.
+6. Every media item supports play() and displayDetails().
+7. A player should accept a common Media reference and play any supported type.
+8. It must not use a chain of checks for media type.
+
+Tasks:
+Design the media abstraction and demonstrate playback of different media objects.
+
+Interview follow-ups:
+- Which methods belong in the parent abstraction?
+- Why might Media be abstract?
+- How does dynamic dispatch choose play()?
+- What methods can be called through a Media reference?
+- What would happen if a child class forgot to implement an abstract method?
+
+============================================================
+QUESTION 15 — SHIPPING AND COURIER COST
+============================================================
+
+A shipping platform supports Standard, Express, and International shipments.
+
+Requirements:
+1. Every shipment has shipment ID, weight, and destination.
+2. Weight must be positive.
+3. Standard shipment uses weight-based pricing.
+4. Express shipment adds an urgency charge.
+5. International shipment adds customs-handling charge.
+6. Each shipment calculates its shipping fee.
+7. Checkout should calculate shipping through a common shipment reference.
+8. Shipment data must be validated and encapsulated.
+
+Tasks:
+Design the shipment types and demonstrate fee calculation.
+
+Interview follow-ups:
+- Which behavior is abstract?
+- Which fields belong to the common class?
+- How does polymorphism eliminate type checks?
+- Can an abstract class contain implemented methods?
+- How would a new shipment type be added?
+
+============================================================
+QUESTION 16 — SCHOOL COURSE REGISTRATION
+============================================================
+
+A learning platform offers Programming, Mathematics, and Language courses.
+
+Requirements:
+1. Every course has course ID, title, and duration.
+2. Course ID must be immutable.
+3. Programming courses have a lab fee.
+4. Mathematics courses have a material fee.
+5. Language courses have a speaking-session fee.
+6. Every course calculates total enrollment cost differently.
+7. A registration service should work with a Course reference.
+8. Invalid duration and fees must be rejected.
+
+Tasks:
+Design the course hierarchy and implement enrollment-cost calculation.
+
+Interview follow-ups:
+- What belongs in the abstract Course class?
+- Why should course-specific charges be overridden?
+- How can the registration service avoid checking course types?
+- Is Course a suitable abstract class?
+- What changes are required to add a new course type?
+
+============================================================
+QUESTION 17 — INVENTORY ITEM AND STOCK OPERATIONS
+============================================================
+
+A warehouse product manages PhysicalGoods, PerishableGoods, and DigitalGoods.
+
+Requirements:
+1. Every item has item ID, name, and stock quantity.
+2. Quantity must never become negative.
+3. Physical goods have storage cost.
+4. Perishable goods include expiry information and may be rejected after expiry.
+5. Digital goods do not use physical stock; they track available licenses.
+6. Each type has its own availability rule.
+7. An order service checks availability using a common item reference.
+8. Stock updates must be performed through methods, not public fields.
+
+Tasks:
+Design the item hierarchy and demonstrate availability and stock update operations.
+
+Interview follow-ups:
+- Does every child type fit the same parent contract?
+- Is DigitalGoods truly an Item in this model? Defend your design.
+- Where should stock validation occur?
+- What does encapsulation protect in this scenario?
+- Would inheritance or composition be better for license tracking?
+
+============================================================
+QUESTION 18 — MULTI-ROLE USER ACCOUNT
+============================================================
+
+A product has Customer, Admin, and DeliveryPartner user types.
+
+Requirements:
+1. Every user has user ID, name, and email.
+2. User ID must not be modified after construction.
+3. Customer can place orders.
+4. Admin can approve product listings.
+5. DeliveryPartner can update delivery status.
+6. Every user has common profile-display behavior.
+7. The application should use a common User reference for shared operations.
+8. Role-specific actions must not be available on an inappropriate user type.
+
+Tasks:
+Design the user hierarchy and demonstrate shared and role-specific behavior.
+
+Interview follow-ups:
+- Should User be abstract?
+- Is a role-specific method available through a parent reference?
+- What is the difference between overriding and adding a new child method?
+- Can a parent reference call a method that exists only in the child?
+- How might interfaces represent capabilities such as OrderPlacer or DeliveryUpdater?
+
+============================================================
+QUESTION 19 — TAX CALCULATION MODULE
+============================================================
+
+A billing product supports DomesticSale, ExportSale, and TaxExemptSale.
+
+Requirements:
+1. Every sale has invoice number and taxable amount.
+2. Amount cannot be negative.
+3. Domestic sales apply a configured tax percentage.
+4. Export sales apply a different rule.
+5. Tax-exempt sales calculate zero tax.
+6. Each sale calculates tax and final amount.
+7. Invoice generation should use a common Sale reference.
+8. The module must support adding a new sale category without rewriting
+   the invoice total calculation.
+
+Tasks:
+Design the abstraction and implement sample invoices.
+
+Interview follow-ups:
+- Should tax calculation be abstract or concrete in the parent?
+- What would happen if tax calculation used a switch on category?
+- How do abstraction and polymorphism work together?
+- Which data should be immutable?
+- How can invalid tax rates be prevented?
+
+============================================================
+QUESTION 20 — PRODUCT DESIGN: PARKING LOT PAYMENT
+============================================================
+
+A parking application supports BikeParking, CarParking, and HeavyVehicleParking.
+
+Requirements:
+1. Every parking ticket has ticket number, vehicle registration, and entry time
+   (use a simplified integer hour for this assignment).
+2. Exit hour must be after entry hour.
+3. Bike, car, and heavy vehicle have different hourly rates.
+4. Each parking type calculates the parking fee differently.
+5. A parking payment service calculates the fee using a common ParkingTicket
+   or ParkingType reference.
+6. Ticket details must not be directly modified after creation except through
+   controlled methods.
+7. The design should make it straightforward to add ElectricVehicleParking.
+
+Tasks:
+Design the classes and demonstrate fee calculation for multiple vehicle types.
+
+Interview follow-ups:
+- Which concept represents the different fee rules?
+- What is the difference between ParkingTicket HAS-A ParkingType and
+  ParkingType IS-A ParkingCategory?
+- Which fields should be private/final?
+- Should the pricing formula be an overridden method or a separate abstraction?
+- How would your design accommodate a new parking category?
+
+============================================================
+INTERVIEWER GUIDANCE / STUDENT EXPECTATIONS
+============================================================
+
+For each scenario, students should be expected to:
+1. Identify classes from the requirements.
+2. Identify common fields and common behavior.
+3. Identify specialized fields and behavior.
+4. Choose and justify inheritance, composition, or interface.
+5. Apply encapsulation and validation.
+6. Use constructors correctly.
+7. Apply method overloading only where it makes sense.
+8. Apply overriding for specialized behavior.
+9. Demonstrate polymorphism through parent/interface references.
+10. Explain how the design accommodates a new product type.
+
+Do not accept answers consisting only of OOP definitions.
+Ask students to explain why they chose a design, draw a class relationship,
+write the key classes, demonstrate at least three different concrete objects,
+and test both valid and invalid inputs.
+
+Suggested difficulty: 7.5–8.5/10 for fresher interviews.
